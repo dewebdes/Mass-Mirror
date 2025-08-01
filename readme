@@ -1,0 +1,169 @@
+https://copilot.microsoft.com/chats/5FATu7fEQYxKKhCa2oCpe
+https://copilot.microsoft.com/chats/pGcoJGg2VnLwW5nHGpFzH
+
+### 📂 Project Tree Snapshot
+
+```plaintext
++---app
+|   |   feedRouter.js
+|   |   launchBrowser.js
+|   |   main.js
+|   |   mirrorServer.js
+|   |   package-lock.json
+|   |   package.json
+|   |   readme
+|   |   
+|   +---config
+|   |       settings.json
+|   |       
+|   +---dashboard
+|   |       dashboard.html
+|   |       dashboardClient.js
+|   |       server.js
+|   |       styles.css
+|   |       
+|   +---logs
+|   |       system.log
+|   |       unknown.log
+|   |       
+|   +---modules
+|   |   |   processorFetch.js
+|   |   |   processorWS.js
+|   |   |   
+|   |   \---diagnostics
+|   |           corsChecker.js
+|   |           simpleRequestClassifier.js
+|   |           
+|   +---profiles
+|   +---public
+|   \---utils
+|           flowFormatter.js
+|           flowStore.js
+|           logger.js
+|           
++---extension
+|   |   background.js
+|   |   manifest.json
+|   |   mirrorEmitter.js
+|   |   popup.html
+|   |   popup.js
+|   |   readme
+|   |   
+|   +---contentScripts
+|   |       fetchMirror.js
+|   |       wsMirror.js
+|   |       
+|   +---icons
+|   |       icon128.png
+|   |       icon16.png
+|   |       icon48.png
+|   |       
+|   +---styles
+|   |       popup.css
+|   |       
+|   \---utils
+|           captureHelpers.js
+
+```
+
+
+# 🧭 Mass-Mirror Node — Modular Diagnostic Engine
+
+_Architected to reflect passive browser flows with modular clarity, symbolic intent, and full diagnostic transparency._
+
+---
+
+### 🔹 Phase 1: **System Spine & Orchestration**
+
+Core entry and coordination of the Node engine.
+
+| File | Role |
+|------|------|
+| `main.js` | Bootstraps Chrome, server, and mirror intake |
+| `launchBrowser.js` | Opens diagnostic Chrome with profile management |
+| `mirrorServer.js` | Upgrades HTTP intake to WebSocket for extension feed |
+| `feedRouter.js` | Distributes incoming flows to protocol processors |
+
+---
+
+### 🔹 Phase 2: **Flow Processors**
+
+Decode and transform feed events before analysis.
+
+| File | Role |
+|------|------|
+| `processorFetch.js` | Handles standard HTTP-based flows |
+| `processorWS.js` | Handles WebSocket-based flows |
+
+---
+
+### 🔹 Phase 3: **Diagnostic Mirrors**
+
+Reveal boundary behavior and ethical compliance.
+
+| File | Role |
+|------|------|
+| `corsChecker.js` | Identifies CORS flags and anomalies |
+| `simpleRequestClassifier.js` | Categorizes request complexity |
+
+---
+
+### 🔹 Phase 4: **Dashboard Frontend**
+
+Visual surface for observing feeds over time.
+
+| File | Role |
+|------|------|
+| `dashboard.html` | Visual markup of feed table |
+| `styles.css` | Thematic dashboard styling |
+| `dashboardClient.js` | Polls API and populates UI |
+| `server.js` | Serves dashboard + flow data over HTTP |
+
+---
+
+### 🔹 Phase 5: **Utilities & Storage**
+
+Data formatting, logging, and session-based memory.
+
+| File | Role |
+|------|------|
+| `logger.js` | Logs both structured flows and symbolic messages |
+| `flowFormatter.js` | Optional formatting logic for display |
+| `flowStore.js` | In-memory session → flow mapping |
+
+---
+
+### 🔹 Phase 6: **Extension Companion**
+
+Captures passive flows and reflects them via WebSocket.
+
+| File | Role |
+|------|------|
+| `background.js` | Orchestrates feed emission to mirror |
+| `mirrorEmitter.js` | Manages socket lifecycle and feed dispatch |
+| `popup.html / popup.js` | UI controls and diagnostics |
+| `fetchMirror.js` | Injected for HTTP observation |
+| `wsMirror.js` | Injected for WS observation |
+| `manifest.json` | Extension configuration |
+
+---
+
+### 🔹 Phase 7: **Project Config & Assets**
+
+| Path | Role |
+|------|------|
+| `settings.json` | Port and session config |
+| `logs/` | Recorded system and flow entries |
+| `icons/` | Extension visual assets |
+
+---
+
+### 🧠 Current Diagnostics State
+
+- ✅ Mirror intake on `ws://localhost:9222/mirror`
+- ✅ Feeds logging to console + written to `logs/`
+- ✅ Dashboard styling resolved and visible
+- ⏳ Dashboard population pending — hook `storeFlow()` to live feed intake
+- ✅ MIME and module errors cleared
+
+---

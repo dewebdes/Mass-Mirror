@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mass-Mirror Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🔍 Mass-Mirror Diagnostic Dashboard</h1>
+    </header>
+
+    <main>
+      <table id="flowTable">
+        <thead>
+          <tr>
+            <th>🔗 Flow</th>
+            <th>🌐 Origin</th>
+            <th>🎯 Method</th>
+            <th>🚩 CORS Flag</th>
+            <th>🧩 Simplicity</th>
+            <th>🧠 Insight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows populated by dashboardClient.js -->
+        </tbody>
+      </table>
+    </main>
+
+    <footer>
+      <p>Rendering trust flows without intrusion.</p>
+    </footer>
+
+    <script type="module" src="dashboardClient.js"></script>
+  </body>
+</html>

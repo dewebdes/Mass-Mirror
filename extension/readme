@@ -1,0 +1,21 @@
+mirror-extension/
+├── manifest.json              # Core extension config (permissions, injection capability, background flow)
+├── background.js              # Listens for UI triggers, manages tracking, selectively injects scripts
+├── popup.html                 # Extension dialog with checkboxes (response body, WebSocket) + start button
+├── popup.js                   # Handles user selections and messaging to background
+├── icons/
+│   ├── icon16.png
+│   ├── icon48.png
+│   └── icon128.png
+├── styles/
+│   └── popup.css              # Optional stylesheet for popup UI refinement
+├── utils/
+│   └── captureHelpers.js      # Shared JS helpers (decode payloads, format logs, safety wrappers)
+├── contentScripts/            # Gracefully injected observation modules (based on user toggles)
+│   ├── wsMirror.js            # Mirrors WebSocket send/onmessage events
+│   └── fetchMirror.js         # Mirrors fetch/XHR response bodies with page-level access
+└── README.md                  # Optional: brief architecture notes and setup steps
+
+
+
+Extension → Select options → Navigate

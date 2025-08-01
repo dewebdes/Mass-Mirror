@@ -1,0 +1,121 @@
+mass-mirror-node/
+├── main.js                    # Entrypoint: orchestrates modules & config
+├── launchBrowser.js          # Spawns Chrome with diagnostic flags
+├── mirrorServer.js           # WebSocket server for mirrored extension events
+├── feedRouter.js             # Routes events to protocol processors
+├── modules/
+│   ├── processorFetch.js     # Enriches HTTP flows with method, headers, diagnostics
+│   ├── processorWS.js        # Parses WebSocket upgrades, pings, payloads
+│   └── diagnostics/
+│       ├── corsChecker.js         # Evaluates CORS anomalies (flags origin/status/method mismatch)
+│       └── simpleRequestClassifier.js  # Detects simple/non-simple CORS requests
+├── dashboard/
+│   ├── server.js             # Express + WebSocket backend for dashboard
+│   ├── dashboard.html        # Table layout: expandable rows for response/inspect
+│   └── dashboardClient.js    # UI controller: injects expanded areas, handles symbols
+├── utils/
+│   ├── flowFormatter.js      # Formats request/response metadata for dashboard
+│   ├── flowStore.js          # (New) Caches flows per tab/session for expansion logic
+│   └── logger.js             # Timestamped log utility for raw flow snapshots
+├── config/
+│   └── settings.json         # Port, profile, start URL, toggle modules
+├── public/
+│   └── icons/                # Visual assets (optional: tab favicons, protocol symbols)
+├── package.json
+└── README.md
+
+
+
+---
+
+### 🧭 **Suggested Code Printing Order (Cognitive Flow)**
+
+#### 🔹 Phase 1: System Spine & Entry
+Start with the project’s skeletal flow—how modules connect, how the app boots.
+1. `main.js` – The orchestrator
+2. `launchBrowser.js` – The gatekeeper of diagnostic Chrome
+3. `mirrorServer.js` – The event broker
+4. `feedRouter.js` – The flow distributor
+
+#### 🔹 Phase 2: Flow Processors
+Handle packet-level logic and how flows are enriched.
+5. `processorFetch.js`
+6. `processorWS.js`
+
+#### 🔹 Phase 3: Diagnostic Mirrors
+Reveal boundaries and ethical flags.
+7. `corsChecker.js`
+8. `simpleRequestClassifier.js`
+
+#### 🔹 Phase 4: Dashboard Frontend
+Visualize stories from passive flows.
+9. `dashboard.html`
+10. `dashboardClient.js`
+11. `server.js`
+
+#### 🔹 Phase 5: Utilities
+The unsung helpers—formatters, loggers, storage.
+12. `flowFormatter.js`
+13. `flowStore.js`
+14. `logger.js`
+
+#### 🔹 Phase 6: Config & Assets
+Close with knobs, dials, and visual resonance.
+15. `settings.json`
+16. Optional: `icons/` and README
+
+---
+
+
+
+
+---
+
+### 🪟 Edge Launch Script (Windows CMD)
+
+```cmd
+start "" "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" ^
+  --user-data-dir="C:\MassMirrorProfiles\EdgeProfile" ^
+  --remote-debugging-port=9222 ^
+  --disable-extensions ^
+  --disable-popup-blocking ^
+  --disable-background-networking ^
+  --window-size=1280,800 ^
+  --disable-features=AutomationControlled ^
+  --no-first-run ^
+  --new-window "https://your-start-page.local"
+```
+
+---
+
+### 🧭 Chrome Launch Script (Windows CMD)
+
+```cmd
+start "" "C:\Program Files\Google\Chrome\Application\chrome.exe" ^
+  --user-data-dir="C:\MassMirrorProfiles\ChromeProfile" ^
+  --remote-debugging-port=9223 ^
+  --disable-extensions ^
+  --disable-popup-blocking ^
+  --disable-background-networking ^
+  --window-size=1280,800 ^
+  --disable-features=AutomationControlled ^
+  --no-first-run ^
+  --new-window "https://your-start-page.local"
+```
+
+---
+
+### 📓 Notes for Precision
+
+- **`--user-data-dir`**: Creates or reuses a clean sandbox profile—preserves local storage, avoids noise.
+- **`--remote-debugging-port`**: Lets you inspect flows externally if needed (e.g., via Chrome DevTools Protocol).
+- **`--disable-extensions`**: Forces purity—no rogue interference except your extension.
+- **Window size + flags**: Ensures reproducibility in viewport and behavior across runs.
+- **Custom Start URL**: Replace with whatever diagnostic page you want as the entrypoint (local or live).
+
+
+netsh advfirewall firewall add rule name="MassMirror9222" dir=in action=allow protocol=TCP localport=9222
+netsh advfirewall firewall add rule name="MassMirrorOut9222" dir=out action=allow protocol=TCP localport=9222
+
+netstat -aon | findstr :9222
+

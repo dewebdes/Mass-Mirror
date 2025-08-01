@@ -1,0 +1,11 @@
+{
+  "port": 9222,
+  "startURL": "https://coinex.com/",
+  "profile": "Default",
+  "modules": {
+    "enableCORSChecker": true,
+    "enableSimplicityClassifier": true,
+    "logFlows": true
+  },
+  "refreshInterval": 5000
+}

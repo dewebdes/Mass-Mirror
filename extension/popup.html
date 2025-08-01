@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mass-Mirror Control</title>
+    <link rel="stylesheet" href="styles/popup.css" />
+  </head>
+  <body>
+    <div class="wrapper" style="width: 420px !important">
+      <h1>Mass-Mirror</h1>
+
+      <label for="wsCapture">
+        <input type="checkbox" id="wsCapture" aria-label="Capture WebSocket" />
+        Capture WebSocket
+      </label>
+
+      <label for="fetchCapture">
+        <input type="checkbox" id="fetchCapture" aria-label="Capture Fetch" />
+        Capture Response Body
+      </label>
+
+      <label for="injectCapture">
+        <input
+          type="checkbox"
+          id="injectCapture"
+          aria-label="Inject JS to Read Body"
+        />
+        Inject JS to Read Body
+      </label>
+
+      <button id="saveBtn" aria-label="Save Settings">Save Settings</button>
+
+      <p id="status" role="status" aria-live="polite"></p>
+
+      <p class="tip">
+        🧭 Tip: Set your mirror's gaze first—then enter the flow.<br />
+        Settings apply only to tabs opened <em>after</em> capture is enabled.
+      </p>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
